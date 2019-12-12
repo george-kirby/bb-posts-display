@@ -16,7 +16,7 @@ function App() {
         {posts.length > 0
           ? posts.map(post => {
               return (
-                <div className="post-card">
+                <div className="post-card" key={`post-${post.id}`}>
                   <h4>{post.title}</h4>
                   <div>{post.body}</div>
                 </div>
