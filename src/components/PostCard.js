@@ -1,15 +1,17 @@
 import React, { useState } from "react"
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, user }) => {
   const [selected, setSelected] = useState(false)
 
   const toggleSelected = () => setSelected(!selected)
 
   return (
     <div onClick={toggleSelected} className="post-card" key={`post-${post.id}`}>
-      <dialog onClick={toggleSelected} open={selected}>Hello</dialog>
       <h4>{post.title}</h4>
-      <div>{post.body}</div>
+        <div>by {user.name}</div>
+      <dialog onClick={toggleSelected} open={selected}>
+        <div>{post.body}</div>
+      </dialog>
     </div>
   )
 }
