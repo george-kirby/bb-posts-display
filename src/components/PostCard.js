@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import '../stylesheets/PostCard.css'
+import "../stylesheets/PostCard.css"
+import PostComments from "./PostComments"
 
-const PostCard = ({ post, user }) => {
+const PostCard = ({ post, user, comments }) => {
   const [selected, setSelected] = useState(false)
 
   const toggleSelected = () => setSelected(!selected)
@@ -9,10 +10,9 @@ const PostCard = ({ post, user }) => {
   return (
     <div onClick={toggleSelected} className="post-card" key={`post-${post.id}`}>
       <h4>{post.title}</h4>
-        <div>by {user.name}</div>
-      <dialog onClick={toggleSelected} open={selected}>
-        <div>{post.body}</div>
-      </dialog>
+      <div>{post.body}</div>
+      <h6>by {user.name}</h6>
+      <PostComments onClick={toggleSelected} {...{ selected, comments }}/>
     </div>
   )
 }
