@@ -14,7 +14,7 @@ function App() {
       API.getPosts().then(resp => {
         setPosts(resp)
         API.getComments().then(setComments)
-      }) // stores first 10 posts in state
+      })
     })
   }, [])
 
