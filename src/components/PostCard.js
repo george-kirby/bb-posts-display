@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import '../stylesheets/PostCard.css'
 
 const PostCard = ({ post, user }) => {
   const [selected, setSelected] = useState(false)
