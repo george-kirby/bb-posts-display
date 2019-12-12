@@ -5,9 +5,13 @@ import PostCard from "./components/PostCard"
 
 function App() {
   const [posts, setPosts] = useState([])
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
-    API.getPosts().then(resp => setPosts(resp.slice(0, 10))) // stores first 10 posts in state
+    API.getUsers().then(resp => {
+      setUsers(resp)
+      API.getPosts().then(resp => setPosts(resp.slice(0, 10))) // stores first 10 posts in state
+    })
   }, [])
 
   return (
@@ -16,7 +20,7 @@ function App() {
 
       <div id="posts-container">
         {posts.length > 0
-          ? posts.map(post => <PostCard {...{post}}/>)
+          ? posts.map(post => <PostCard {...{post}} user={users.find(user => user.id === post.userId)}/>)
           : "Loading posts"}
       </div>
     </div>
