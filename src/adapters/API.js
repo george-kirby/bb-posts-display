@@ -8,4 +8,14 @@ const getPosts = () => {
     .then(resp => resp.json())
 }
 
-export default { getPosts }
+const getUsers = () => {
+    return fetch(USERS_ENDPOINT)
+    .then(resp => resp.json())
+}
+
+const getComments = () => {
+    return fetch(COMMENTS_ENDPOINT)
+    .then(resp => resp.json())
+}
+
+export default { getPosts, getUsers, getComments }
